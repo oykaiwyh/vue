@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+
+
+
+	
+</head>
+<body>
+	<div id='app'>
+		<!-- //方法yi -->
+<!-- 		<counterfirst v-if='type === "chooseone"'></counterfirst>
+
+		<countersecond v-if = "type === 'choosetwo'"></countersecond> -->
+
+
+		<!-- 动态路由 -->
+		<component :is='move'></component>
+
+
+		<button @click='handleclick'>切换</button>
+
+	</div>
+
+
+	<script>
+
+		Vue.component('counterfirst',{
+			template:'<div v-once>123</div>'
+						
+		})
+
+
+		Vue.component('countersecond',{
+			template:'<div v-once>234</div>'
+		})
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				move:'counterfirst',
+				type:'chooseone'
+			},
+			methods:{
+				handleclick :function () {
+					// console.log(this.type)
+					//this.type = (this.type === 'chooseone' ? 'choosetwo' : 'chooseone')
+
+					// 动态组件
+					this.move = (this.move === 'counterfirst' ? 'countersecond' : 'counterfirst')
+
+
+				}
+			}
+
+		})
+
+
+
+	</script>
+
+
+</body>
+</html>

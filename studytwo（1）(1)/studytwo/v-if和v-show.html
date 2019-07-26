@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+	<style>
+		.test{	
+			color:red
+		}
+	</style>
+
+
+	
+</head>
+<body>
+	<div id='app'>
+		<!-- //方法一 class对象绑定-->
+		<div v-if='isshow'>
+			{{content}}
+		</div>
+
+		<!-- //方法二 class对象绑定-->
+		<div v-show='isshow'>
+			{{content}}
+		</div>
+
+
+		<!-- //中间不能存在其他标签分割 -->
+		<div v-if='test =="a" '>
+			wo is A
+		</div>
+
+		<div v-else-if='test =="b" '>
+			wo is B
+		</div>
+
+		<div v-else='test =="c" '>
+			wo is C
+		</div>
+
+
+
+
+
+
+	</div>
+
+
+	<script>
+		var app = new Vue({
+			el:"#app",
+			data:{			
+				content:'hellow ',
+				isshow:false,
+				test:'a'
+
+
+			},
+			methods:{
+				handeclick:function () {
+					this.isshow = ! this.isshow
+				}
+
+			}
+
+
+
+
+		})
+
+	</script>
+
+
+</body>
+</html>

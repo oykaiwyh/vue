@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+	<style>
+		.test{	
+			color:red
+		}
+	</style>
+
+
+	
+</head>
+<body>
+	<div id='app'>
+		<!-- //方法一 class对象绑定-->
+		<div v-on:click='handeclick' v-bind:class="{test:isshow}">
+			{{content}}
+		</div>
+
+		<!-- //方法二 class对象绑定-->
+		<div v-on:click='handeclicktwo' v-bind:class="[two]">
+			{{content}}
+		</div>
+
+
+		<!-- //方法三 style对象绑定-->
+		<div v-on:click='handeclickthree' v-bind:style="obj">
+			{{content}}
+		</div>
+		
+		<!-- //方法四 style数组绑定-->
+		<div v-on:click='handeclickthree' v-bind:style="[ogj]">
+			{{content}}
+		</div>
+
+
+
+
+
+	</div>
+
+
+	<script>
+		var app = new Vue({
+			el:"#app",
+			data:{				
+				content:'hellow world',
+				isshow:false,
+
+				two:"",
+
+				obj:{
+					color:"black"
+				}
+
+
+			},
+			methods:{
+				handeclick:function () {
+					this.isshow = ! this.isshow
+				},
+				handeclicktwo:function () {
+					// console.log(this.two ? 'test':"")
+					this.two=this.two ? '':'test'
+
+				},
+				handeclickthree:function () {
+					// console.log(this.two ? 'test':"")
+					this.obj.color = this.obj.color === 'black' ? 'red':'black'
+
+				}
+
+			}
+
+
+
+
+		})
+
+	</script>
+
+
+</body>
+</html>

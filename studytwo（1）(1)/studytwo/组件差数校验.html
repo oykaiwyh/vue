@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+
+
+
+	
+</head>
+<body>
+	<div id='app'>
+		<counter :count='123'></counter>
+	</div>
+
+
+	<script>
+		var counter={
+			props:{
+				// 方法一
+				// count:[ String , Number]
+
+				count:{
+					type:[ String,Number],
+					required:false,
+					default:'default value',
+					//校验器
+					validator:function (value) {
+						return ( value.length > 5)
+					}
+				}
+
+
+			},
+			template:'<div>{{count}}</div>'
+		}
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+
+			},
+			components:{
+				counter:counter
+			}
+
+		})
+
+
+	</script>
+
+
+</body>
+</html>

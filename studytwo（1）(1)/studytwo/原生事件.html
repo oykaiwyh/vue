@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+
+
+
+	
+</head>
+<body>
+	<div id='app'>
+
+		<!-- 原生事件绑定 -->
+		<counter @click.native='handleclick'></counter>
+	</div>
+
+
+	<script>
+		Vue.component('counter',{
+			template:'<div>123</div>'
+		})
+
+		var app = new Vue({
+			el:'#app',
+			methods:{
+				handleclick:function () {
+					alert('aa')
+				}
+			}
+
+		})
+
+
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+
+
+
+	
+</head>
+<body>
+	<div id='app'>
+		<counter>
+			<template slot-scope='props'>
+				<h1 >{{props.item}}</h1>
+			</template>
+		</counter>
+
+
+	</div>
+
+
+	<script>
+		Vue.component('counter',{
+			data:function () {
+				return {
+					list: [ 1 , 2 , 3]
+				}
+			},
+			template:`
+						<div>
+							<slot v-for="item of list " :item=item ></slot>
+						</div>
+					`
+		})
+
+		var app = new Vue({
+			el:'#app',
+
+		})
+
+
+
+	</script>
+
+
+</body>
+</html>

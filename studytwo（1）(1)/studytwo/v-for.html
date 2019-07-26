@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+	<style>
+		.test{	
+			color:red
+		}
+	</style>
+
+
+	
+</head>
+<body>
+	<div id='app'>
+		<!-- 1.循环数组 可用template代替div  -->
+		<div v-for='(item ,index) of list' v-bind:key='item.id'>
+			{{item.content}}
+		</div>
+
+		<!-- 2.循环对象 可用template代替div 可更改整个对象对其渲染 -->
+		<div v-for='(item ,key , index) of obj' >
+			{{key}}----{{item}}----{{index}}
+		</div>
+
+
+
+	</div>
+
+
+	<script>
+		var app = new Vue({
+			el:"#app",
+			data:{			
+				list:[{
+					id:1,
+					content:'a'
+				},{
+					id:2,
+					content:'b'
+				},{
+					id:3,
+					content:'c'
+				}],
+				obj:{
+					name:'zhangshan',
+					type:'person',
+					age:18
+				}
+
+
+			},
+			methods:{
+				handeclick:function () {
+					this.isshow = ! this.isshow
+				}
+
+			}
+
+
+
+
+		})
+
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>计算属性和监听器</title>
+	<script src='./vue.js'></script>
+</head>
+<body>
+	<div id='app'>
+		<!-- 计算属性 -->
+		{{tatal}}
+
+		<!-- 方法实现 -->
+		{{threemeth()}}
+
+
+
+	</div>
+
+
+	<script>
+		var app = new Vue({
+			el:"#app",
+			data:{
+				first:"one",
+				second:"two",
+				three:'one two'
+
+			},
+			// 1.计算属性  内置缓存  ，当相关数据没有改变时不再重新渲染，改变再对其渲染
+			computed:{
+				tatal:function () {
+					// body...
+					console.log('渲染了一次')
+					return this.first + " " + this.second
+				}
+			},
+			// 2.时间监听  内置缓存  ，当监听的数据没有改变时不再重新渲染，改变再对其渲染
+			watch:{
+				//监听first，如果发生变化，实现
+				first:function () {
+					// body...
+					console.log('渲染了一次')
+					this.three = this.first + " " + this.second
+				},
+				second:function () {
+					// body...
+					console.log('渲染了一次')
+					this.three = this.first + " " + this.second
+				}
+			},
+			// 3. 方法实现  没有内置缓存  ，只要页面重新渲染，就会再重新执行一次，性能差
+			methods:{
+				threemeth:function () {
+					// body...
+					console.log('渲染了一次')
+					return this.first + " " + this.second
+				}
+			}
+
+
+		})
+
+	</script>
+
+
+</body>
+</html>

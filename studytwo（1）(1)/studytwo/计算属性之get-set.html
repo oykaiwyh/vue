@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>计算属性和监听器</title>
+	<script src='./vue.js'></script>
+</head>
+<body>
+	<div id='app'>
+		<!-- 计算属性 -->
+		{{tatal}}
+
+
+
+
+	</div>
+
+
+	<script>
+		var app = new Vue({
+			el:"#app",
+			data:{
+				first:"one",
+				second:"two",
+				three:'one two'
+
+			},
+			// 1.计算属性  内置缓存  ，当相关数据没有改变时不再重新渲染，改变再对其渲染
+			computed:{
+				tatal:{
+
+					get:function () {
+						// body...
+						console.log('渲染了一次')
+						return this.first + " " + this.second
+					},
+					set:function (value) {
+
+						//控制台输入:  app.tatal='onetest twotest'
+
+						var arr = value.split(" ")
+						this.first = arr[0]
+						this.second = arr[1]
+					}
+				}
+
+
+			},
+
+
+
+		})
+
+	</script>
+
+
+</body>
+</html>

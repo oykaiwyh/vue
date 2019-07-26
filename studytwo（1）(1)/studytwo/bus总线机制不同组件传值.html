@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+
+
+
+	
+</head>
+<body>
+	<div id='app'>
+
+		<counter content='aa'></counter>
+
+		<counter content='bb'></counter>
+
+	</div>
+
+
+	<script>
+
+		// 挂载bus
+		Vue.prototype.bus = new Vue()
+
+
+
+
+		Vue.component('counter',{
+			props:['content'],
+			data:function () {
+				return {
+					childcontent:this.content
+				}
+			},
+			template:'<div @click="handleclick">{{childcontent}}</div>',
+			methods:{
+				handleclick:function () {
+					this.bus.$emit('change' , this.childcontent)
+				}
+			},
+			// 使用生命周期函数对事件进行监听
+			mounted:function () {
+				//改变this指向当前
+				const this_=this
+
+				this.bus.$on('change',function (value) {
+					//this指向不对,指向父组件vue实例
+					// console.log(this)
+					// console.log(this_)
+					this_.childcontent = value
+				})
+			}
+
+		})
+
+		var app = new Vue({
+			el:'#app',
+
+
+		})
+
+
+	</script>
+
+
+</body>
+</html>

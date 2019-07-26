@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+	<style>
+		.test{	
+			color:red
+		}
+	</style>
+
+
+	
+</head>
+<body>
+	<div id='app'>
+		<!-- 1.截取标签dom 获取dom节点 -->
+		<div
+			ref='test'
+			@click='handeclick'
+		>
+			hellow vue
+		</div>
+
+		<!-- 2. 截取子组件dom -->
+
+		<div>
+			<counter ref='one' @change='change'></counter>
+			<counter ref='two' @change='change'></counter>
+
+			<div >{{tatal}}</div>
+		</div>
+
+
+	</div>
+
+
+	<script>
+
+
+		var counter = {
+				template:'<div @click="handeclick">{{num}}</div>',
+				data:function(){
+					return {
+						num:0
+
+					}
+				},
+				methods:{
+					handeclick:function () {
+						this.num++
+						this.$emit('change')
+					}
+				}
+
+		}
+
+		var app = new Vue({
+			el:"#app",
+			data:{
+				tatal:0
+			},
+			methods:{
+				handeclick:function () {
+					alert(this.$refs.test.innerHTML)
+				},
+				change:function () {
+					console.log(this.$refs.one.num)
+					this.tatal=this.$refs.one.num+this.$refs.two.num
+
+				}
+
+			},
+			components:{
+				counter:counter
+
+			}
+
+
+
+
+		})
+
+	</script>
+
+
+</body>
+</html>

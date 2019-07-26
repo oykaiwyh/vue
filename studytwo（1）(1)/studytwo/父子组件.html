@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+	<style>
+		.test{	
+			color:red
+		}
+	</style>
+
+
+	
+</head>
+<body>
+	<div id='app'>
+		<!-- 加了:引号里的内容就是js表达式 不加就是字符串-->
+		<counter :count='0' @add='handleadd'></counter>
+
+		<counter :count='1' @add='handleadd'></counter>
+
+		<div>{{tatal}}</div>
+	</div>
+
+
+	<script>
+
+		var counter={
+			props:['count'],
+			template:'<div @click="handleclick">{{number}}</div>',
+			data:function () {
+				return {
+					number:this.count
+
+				}
+
+				//使用自带数据处理父组件传递过来的值
+			},
+			methods:{
+				handleclick:function () {
+					this.number = this.number + 2;
+					this.$emit('add', 2 )
+				}
+			}
+
+		}
+
+		var app = new Vue({
+			el:"#app",
+			data:{
+				tatal:1
+			},
+			methods:{
+				handleadd:function (number) {
+					this.tatal= this.tatal + number
+				}
+			},
+			components:{
+				counter:counter
+			}
+
+
+
+		})
+
+	</script>
+
+
+</body>
+</html>

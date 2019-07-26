@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class</title>
+	<script src='./vue.js'></script>
+
+
+
+	
+</head>
+<body>
+	<div id='app'>
+
+		<div  v-html='aa' >
+				
+		</div>
+
+
+		<counter content='<p>aa</p>'>
+			<!-- //插槽片段 -->
+			<!-- <span v-html='<p>aa</p>'></span> -->
+			<!-- <template v-html='<p>aa</p>'> </template> -->
+			<div  v-html="'<p>aa</p>'" slot='one' >
+				
+			</div>
+			<div slot='two' >2</div>
+		</counter>
+
+
+	</div>
+
+
+	<script>
+
+
+
+
+
+		Vue.component('counter',{
+			props:['content'],
+			data:function () {
+				return {
+					childcontent:this.content
+				}
+			},
+			template:`
+						<div>
+							
+							<slot name='one' ></slot>
+							<div>between</div>
+							<slot name='two'></slot>
+						</div>
+					`,
+
+
+		})
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				aa:'<h1>aa1adaf</h1>'
+			}
+
+
+		})
+
+
+	</script>
+
+
+</body>
+</html>

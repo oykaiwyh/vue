@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>test</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<style >
+		.bb{
+			color: red;
+		}
+	</style>
+	<!-- <script src="./vue.js"></script> -->
+</head>
+<body>
+	<div id='app'>
+		<input type="test" v-model='textvalue'>
+		<button v-on:click='handelclick'>提交</button>
+		<input id="bb" v-if='label'/>
+		<div>
+		<label for="bb"  @click='labelclick'>aa</label>
+			
+		</div>
+
+
+
+<!-- 		<ul>
+			<li v-for = "item in list">{{item}}</li>
+		</ul> -->
+
+
+		<!-- 组件化 -->
+
+		<ul>
+			<Listtest v-for="(item,index) in list" v-bind:content=item v-bind:index=index @delete='deletehandle'></Listtest>
+		</ul>
+
+
+
+	</div>
+
+
+	<!-- 創建實例 -->
+	<script>
+		// 全局组件
+		//Vue.component('listtest',{
+		//	props:['content'],
+		//	template:'<li >{{content}}</li>'
+		//})
+ 		
+		//局部组件
+		var listtest={
+			props:['content','index'],
+			template:'<li @click="handledelete(index)">{{content}}</li>',
+			methods:{
+				handledelete:function (index) {
+					// body...
+					this.$emit('delete',index)
+				}
+			}
+		}
+
+		var app=new Vue({
+			el:'#app',
+			data:{
+				label:true,
+				list:[],
+				textvalue:''
+			},
+			components:{
+				Listtest:listtest
+			},
+			methods:{
+				handelclick:function (){
+					// console.log('this',this)
+					// console.log('aa')
+					// let aa={{content}}
+					this.list.push(this.textvalue)
+					this.textvalue=''
+				},
+				deletehandle:function(index) {
+					this.list.splice(index,1)
+				},
+				labelclick:function () {
+					console.log('$tools',this.$tools)
+					console.log('@el' , this.$el.scrollTop)
+					this.$el.scrollTop=300
+					console.log('@el' , this.$el.scrollTop)
+					this.label=! this.label
+				}
+			}
+		})
+
+	</script>
+
+
+</body>
+</html>
