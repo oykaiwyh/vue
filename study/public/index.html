@@ -13,13 +13,32 @@
     </noscript>
     <div id="app">
       <div>我在这里</div>
+      <!-- <div @scroll="scroll($event)">
+          <p>113123</p>
+          <p>113123</p>
+          <p>113123</p>
+      
+          <p>113123</p>
+          <p>113123</p>
+          <p>113123</p>
+          <p>113123</p>
+          <p>113123</p>
+      </div> -->
       <main>
         <router-view></router-view>
-        <router-link to="/pagea">Go to pagea</router-link>
+        <router-link :to="'/pagea'">Go to pagea</router-link>
         <router-link to="/pageb">Go to pageb</router-link>
       </main>
 
     </div>
     <!-- built files will be auto injected -->
+
+    <script>
+
+      window.Site = {
+          url: 'http://www.baidu.com',
+
+      }
+  </script>
   </body>
 </html>
