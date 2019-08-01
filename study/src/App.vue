@@ -1,12 +1,25 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>113123</p>
+    <p>113123</p>
+    <p>113123</p>
+
+    <p>113123</p>
+    <p>113123</p>
+    <p>113123</p>
+    <p>113123</p>
+    <p>113123</p>
+    <div @scroll="scroll($event)">
+      <HelloWorld msg="Welcome to Your Vue.js App"/>
+    </div>
+
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import {scroll} from './scroll'
 import './components/test.js'
 
 export default {

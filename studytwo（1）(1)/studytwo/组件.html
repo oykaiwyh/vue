@@ -46,7 +46,12 @@
 
 					}
 				},
+
 				methods:{
+					usetest:function (test) {
+						this.$parent.show()
+						console.log('this is test')
+					},
 					handeclick:function () {
 						this.num++
 						this.$emit('change')
@@ -60,8 +65,20 @@
 			data:{
 				tatal:0
 			},
+			created(){
+					const aa=($scroller)=>{
+						console.log('$scroller', $scroller)
+					}
+					console.log(aa())
+				},
 			methods:{
+				show:function () {
+					console.log('showshowshowshowshow')
+				},
 				handeclick:function () {
+					this.$refs.one.usetest(131)
+					// console.log('this.$refs.test',this.$refs.one(131))
+					// this.$refs.test.usetest('1234')
 					alert(this.$refs.test.innerHTML)
 				},
 				change:function () {

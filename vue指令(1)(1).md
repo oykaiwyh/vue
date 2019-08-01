@@ -1,14 +1,38 @@
 ### vue指令
 
 1. v-for  					循環列表
+
 2. v-on ：name        綁定事件   name：click/onFocus....    简写：” @click “
+
 3. v-model              雙向綁定
+
 4. v-html      一段h5
+
 5. v-text        一段内容
+
 6. v-bind :name    绑定一个内容    name:内容名/class/    可简写为  ： ‘’ :name“
+
 7. v-if     条件渲染   不存在dom节点，
+
 8. v-show   显示渲染  存在dom节点  但display=none  性能相对于v-if好一点，不会频繁的操作dom
+
 9. v-once  将内容放在内存中，提高性能
+
+10. `
+
+    ```
+            // 调用方法：Vue.set( target, key, value )  this.$set会重新渲染视图
+    
+            // target：要更改的数据源(可以是对象或者数组)
+    
+            // key：要更改的具体数据
+    
+            // value ：重新赋的值
+    ```
+
+    `
+
+11. 
 
 ### vue提供数组方法
 
@@ -30,6 +54,7 @@
 6. 在插槽中，想直接渲染原生的html需要在加上单引号或者双引号
 7. v-html不支持模板字符串
 8. 加上标签指向for属性，for指向的是一个标签的id值
+9. 在父子组件相互调用其方法时，父组件只需在子组件上定义ref再通过其$refs在对应其方法即可，对于子组件只需使用$parent对应其方法/使用$emit派发监听事件
 
 ### vue-router
 
