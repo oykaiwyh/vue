@@ -32,7 +32,7 @@
 
     `
 
-11. 
+11. 在vue中，this.data数据时，其实是使用了vue示例代理的data数据，当给其赋值时，数据是数组和对象时，不管数组和对象是否为空，都是返回给原data一个新的数据，数据为字符串和数字时，没有影响，相当于直接修改原始data。可用Vue.set(object ,name ,value) / this.$set(object ,name ,value)直接去操作data数据。
 
 ### vue提供数组方法
 
